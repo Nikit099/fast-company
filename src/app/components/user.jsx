@@ -13,9 +13,9 @@ const User = (props) => {
                 <td key={props.profession._id} >{props.profession.name}</td>
                 <td  >{props.completedMeetings}</td>
                 <td  >{props.rate}/5</td>
-                <td  >  <Bookmark/> </td>
+                <td  >  <Bookmark bookmark = {props.bookmark} /> </td>
                 <td  ><button onClick={() => props.handleDelete(props._id)} type="button" className="btn btn-danger">delete</button></td>
-      
+                    
                 
                     </tr>
     );

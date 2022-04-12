@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-function Bookmark() {
-    const [bookmark, setBookmark] = useState(false)
+function Bookmark(props) {
+    const [bookmark, setBookmark] = useState(props.bookmark)
     const handleBookmark = () => {
     setBookmark(!bookmark)
     }
@@ -9,7 +9,7 @@ function Bookmark() {
         <button onClick={handleBookmark}>{
         bookmark 
         ? 
-        <h4><i class="bi bi-bookmark-check"></i></h4>
+        <h4><i className="bi bi-bookmark-check"></i></h4>
         :
          <h4><i className="bi bi-bookmark"></i></h4> 
         }
