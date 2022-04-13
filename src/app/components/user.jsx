@@ -16,8 +16,7 @@ const User = (props) => {
             <td>{props.completedMeetings}</td>
             <td>{props.rate}/5</td>
             <td>
-                {" "}
-                <Bookmark bookmark={props.bookmark} />{" "}
+                <Bookmark bookmark={props.bookmark} />
             </td>
             <td>
                 <button
@@ -34,11 +33,11 @@ const User = (props) => {
 User.propTypes = {
     name: PropTypes.string.isRequired,
     qualities: PropTypes.array.isRequired,
-    profession: PropTypes.string.isRequired,
+    profession: PropTypes.object.isRequired,
     completedMeetings: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired,
     bookmark: PropTypes.bool.isRequired,
     handleDelete: PropTypes.func.isRequired,
-    _id: PropTypes.number.isRequired
+    _id: PropTypes.string.isRequired
 };
 export default User;

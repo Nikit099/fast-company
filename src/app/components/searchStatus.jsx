@@ -11,10 +11,9 @@ function SearchStatus({ length }) {
         </h1>
     ) : (
         <h1>
-            {" "}
             <span className="badge bg-primary">
                 {length} {renderPhrase(length)} тусанет с тобой сегодня
-            </span>{" "}
+            </span>
         </h1>
     );
 }
