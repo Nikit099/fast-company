@@ -23,20 +23,3 @@ yarn-debug.log*
 yarn-error.log*
 
 
-Array.isArray(items)
-                ? items.map((i) => (
-                      <li
-                          sclassName={
-                              "list-group-item" +
-                              (i.contentProperty === selectedItem
-                                  ? " active"
-                                  : "")
-                          }
-                          key={i.valueProperty}
-                          role="button"
-                          onClick={() => onItemSelect(i.contentProperty)}
-                      >
-                          {i.contentProperty}
-                      </li>
-                  ))
-                :

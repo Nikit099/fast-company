@@ -22,11 +22,21 @@ const Users = ({ users, ...rest }) => {
         setCurrentPage(pageIndex);
     };
     const handleProfessionSelect = (item) => {
+        console.log(item);
         setSelectedProf(item);
     };
-    const filteredUsers = selectedProf
-        ? users.filter((user) => user.profession === selectedProf)
-        : users;
+    const handleFilteredUsers = () => {
+        if (selectedProf && Array.isArray(users)) {
+            return users.filter(
+                (user) => user.profession.name === selectedProf
+            );
+        } else if (selectedProf && typeof users === "object") {
+            return users.filter((user) => user.profession === selectedProf);
+        } else {
+            return users;
+        }
+    };
+    const filteredUsers = handleFilteredUsers();
     const count = filteredUsers.length;
     const userCrop = paginate(filteredUsers, currentPage, pageSize);
     const clearFilter = () => {
