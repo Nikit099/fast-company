@@ -7,35 +7,40 @@ const GroupList = ({
     onItemSelect,
     selectedItem
 }) => {
-    return (
-        <ul className="list-group">
-            {Array.isArray(items)
-                ? items.map((i) => (
+    if (!Array.isArray(items)) {
+        return (
+            <ul className="list-group">
+                {Object.keys(items).map((i) => (
                     <li
                         className={
                             "list-group-item" +
-                              (i.name === selectedItem ? " active" : "")
+                            (items[i] === selectedItem ? " active" : "")
                         }
-                        key={i._id}
-                        role="button"
-                        onClick={() => onItemSelect(i.name)}
-                    >
-                        {i.name}
-                    </li>
-                ))
-                : Object.keys(items).map((i) => (
-                    <li
-                        className={
-                            "list-group-item" +
-                              (items[i] === selectedItem ? " active" : "")
-                        }
-                        onClick={() => onItemSelect(items[i][contentProperty])}
+                        onClick={() => onItemSelect(items[i])}
                         key={items[i][valueProperty]}
                         role="button"
                     >
                         {items[i][contentProperty]}
                     </li>
                 ))}
+            </ul>
+        );
+    }
+    return (
+        <ul className="list-group">
+            {items.map((i) => (
+                <li
+                    className={
+                        "list-group-item" +
+                        (i === selectedItem ? " active" : "")
+                    }
+                    key={i[valueProperty]}
+                    role="button"
+                    onClick={() => onItemSelect(i)}
+                >
+                    {i[contentProperty]}
+                </li>
+            ))}
         </ul>
     );
 };
@@ -48,6 +53,6 @@ GroupList.propTypes = {
     valueProperty: PropTypes.string.isRequired,
     contentProperty: PropTypes.string.isRequired,
     onItemSelect: PropTypes.func,
-    selectedItem: PropTypes.object
+    selectedItem: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
 };
 export default GroupList;

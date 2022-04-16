@@ -22,21 +22,10 @@ const Users = ({ users, ...rest }) => {
         setCurrentPage(pageIndex);
     };
     const handleProfessionSelect = (item) => {
-        console.log(item);
         setSelectedProf(item);
     };
-    const handleFilteredUsers = () => {
-        if (selectedProf && Array.isArray(users)) {
-            return users.filter(
-                (user) => user.profession.name === selectedProf
-            );
-        } else if (selectedProf && typeof users === "object") {
-            return users.filter((user) => user.profession === selectedProf);
-        } else {
-            return users;
-        }
-    };
-    const filteredUsers = handleFilteredUsers();
+
+    const filteredUsers = selectedProf ? users.filter(user => JSON.stringify(user.profession) === JSON.stringify(selectedProf)) : users;
     const count = filteredUsers.length;
     const userCrop = paginate(filteredUsers, currentPage, pageSize);
     const clearFilter = () => {
@@ -59,7 +48,7 @@ const Users = ({ users, ...rest }) => {
                     </button>
                 </div>
             )}
-            <dov className="d-flex flex-column">
+            <div className="d-flex flex-column">
                 <SearchStatus length={count} />
 
                 {count > 0 && (
@@ -94,7 +83,7 @@ const Users = ({ users, ...rest }) => {
                         onPageChange={handlePageChange}
                     />
                 </div>
-            </dov>
+            </div>
         </div>
     );
 };
