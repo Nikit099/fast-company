@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
@@ -13,12 +13,10 @@ function UsersTable({
     onToggleBookMark,
     onDelete
 }) {
-    const [columns, setColumns] = useState({
+    const columns = {
         name: {
             path: "name",
-            name: "Имя",
-            caret: 0,
-            obj: "name"
+            name: "Имя"
         },
         qualities: {
             name: "Качества",
@@ -26,27 +24,19 @@ function UsersTable({
         },
         professions: {
             path: "profession.name",
-            name: "Профессия",
-            caret: 0,
-            obj: "professions"
+            name: "Профессия"
         },
         completedMeetings: {
             path: "completedMeetings",
-            name: "Встретился, раз",
-            caret: 0,
-            obj: "completedMeetings"
+            name: "Встретился, раз"
         },
         rate: {
             path: "rate",
-            name: "Оценка",
-            caret: 0,
-            obj: "rate"
+            name: "Оценка"
         },
         bookmark: {
             path: "bookmark",
             name: "Избранное",
-            obj: "bookmark",
-            caret: 0,
             component: (user) => (
                 <BookMark
                     status={user.bookmark}
@@ -66,10 +56,10 @@ function UsersTable({
                 </button>
             )
         }
-    });
+    };
     return (
         <Table>
-            <TableHeader {...{ onSort, selectedSort, columns, setColumns }} />
+            <TableHeader {...{ onSort, selectedSort, columns }} />
             <TableBody {...{ columns, data: users }} />
         </Table>
     );

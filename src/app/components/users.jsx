@@ -32,7 +32,6 @@ const Users = () => {
     useEffect(() => {
         API.professions.fetchAll().then((data) => setProfessions(data));
     }, []);
-    console.log(users);
     useEffect(() => {
         setCurrentPage(1);
     }, [selectedProf]);
