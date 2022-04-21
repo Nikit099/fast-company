@@ -28,7 +28,17 @@ function TableHeader({ onSort, selectedSort, columns }) {
                         {...{ role: columns[column].path && "button" }}
                     >
                         {columns[column].name}
-                        {columns[column].path === selectedSort.path && <i className={"bi bi-caret-" + (selectedSort.order === "asc" ? "down" : "up") + "-fill"}></i>}
+                        {columns[column].path === selectedSort.path && (
+                            <i
+                                className={
+                                    "bi bi-caret-" +
+                                    (selectedSort.order === "asc"
+                                        ? "down"
+                                        : "up") +
+                                    "-fill"
+                                }
+                            ></i>
+                        )}
                     </th>
                 ))}
             </tr>
