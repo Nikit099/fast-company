@@ -1,26 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-function Bookmark(props) {
-    const [bookmark, setBookmark] = useState(props.bookmark);
-    const handleBookmark = () => {
-        setBookmark(!bookmark);
-    };
+const BookMark = ({ status, ...rest }) => {
     return (
-        <button onClick={handleBookmark}>
-            {bookmark ? (
-                <h4>
-                    <i className="bi bi-bookmark-check"></i>
-                </h4>
-            ) : (
-                <h4>
-                    <i className="bi bi-bookmark"></i>
-                </h4>
-            )}
+        <button {...rest}>
+            <h3>
+                <i
+                    className={"bi bi-bookmark" + (status ? "-heart-fill" : "")}
+                ></i>
+            </h3>
         </button>
     );
-}
-Bookmark.propTypes = {
-    bookmark: PropTypes.bool.isRequired
 };
-export default Bookmark;
+BookMark.propTypes = {
+    status: PropTypes.bool.isRequired
+};
+export default BookMark;
