@@ -12,11 +12,7 @@ function TableHeader({ onSort, selectedSort, columns }) {
             onSort({ path: item, order: "asc" });
         }
     };
-    const renderCaret = (column, sortPath, sortOrder) => {
-        if (column === sortPath) {
-            return <i className={"bi bi-caret-" + (sortOrder === "asc" ? "down" : "up") + "-fill"}></i>;
-        }
-    };
+
     return (
         <thead>
             <tr>
@@ -32,11 +28,7 @@ function TableHeader({ onSort, selectedSort, columns }) {
                         {...{ role: columns[column].path && "button" }}
                     >
                         {columns[column].name}
-                        {renderCaret(
-                            columns[column].path,
-                            selectedSort.path,
-                            selectedSort.order
-                        )}
+                        {columns[column].path === selectedSort.path && <i className={"bi bi-caret-" + (selectedSort.order === "asc" ? "down" : "up") + "-fill"}></i>}
                     </th>
                 ))}
             </tr>
