@@ -14,11 +14,7 @@ function TableHeader({ onSort, selectedSort, columns }) {
     };
     const renderCaret = (column, sortPath, sortOrder) => {
         if (column === sortPath) {
-            if (sortOrder === "asc") {
-                return <i className="bi bi-caret-down-fill"></i>;
-            } else if (sortOrder === "desc") {
-                return <i className="bi bi-caret-up-fill"></i>;
-            }
+            return sortOrder === "asc" ? <i className="bi bi-caret-down-fill"></i> : <i className="bi bi-caret-up-fill"></i>;
         }
     };
     return (
