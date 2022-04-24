@@ -12,6 +12,6 @@ function QualitiesList({ qualities }) {
     );
 }
 QualitiesList.propTypes = {
-    qualities: PropTypes.array
+    qualities: PropTypes.array.isRequired
 };
 export default QualitiesList;
