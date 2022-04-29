@@ -9,12 +9,12 @@ import UserPage from "./components/userPage";
 const App = () => {
     return (
         <>
-            <NavBar/>
+            <NavBar />
             <Switch>
-            <Route path='/main' component={Main}/>
-            <Route path='/login' component={Login}/>
-            <Route path='/users/:userId' component={UserPage} />
-            <Route path='/users' component={Users} />
+                <Route path="/main" component={Main} />
+                <Route path="/login" component={Login} />
+                <Route path="/users/:userId" component={UserPage} />
+                <Route path="/users" component={Users} />
             </Switch>
         </>
     );

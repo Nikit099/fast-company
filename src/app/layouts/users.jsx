@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
 import GroupList from "../components/groupList";
-import API from "../api/indeex";
+import API from "../api";
 import SearchStatus from "../components/searchStatus";
 import UsersTable from "../components/usersTable";
 import _ from "lodash";
@@ -65,10 +65,8 @@ const Users = () => {
         };
         return (
             <div className="d-flex justify-content-center">
-
                 {professions && (
                     <div className="d-flex flex-column flex-shrink-0 p-3">
-
                         <GroupList
                             selectedItem={selectedProf}
                             items={professions}
@@ -83,7 +81,6 @@ const Users = () => {
                     </div>
                 )}
                 <div className="d-flex flex-column">
-
                     <SearchStatus length={count} />
 
                     {count > 0 && (

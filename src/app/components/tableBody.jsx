@@ -18,7 +18,19 @@ function TableBody({ data, columns }) {
             {data.map((item) => (
                 <tr key={item._id}>
                     {Object.keys(columns).map((column) => (
-                        <td key={column}>{ column === "name" ? <Link className="beaut" to={`/users/${item._id}`} > {renderContent(item, column)} </Link> : renderContent(item, column) }</td>
+                        <td key={column}>
+                            {column === "name" ? (
+                                <Link
+                                    className="beaut"
+                                    to={`/users/${item._id}`}
+                                >
+                                    {" "}
+                                    {item.name}{" "}
+                                </Link>
+                            ) : (
+                                renderContent(item, column)
+                            )}
+                        </td>
                     ))}
                 </tr>
             ))}
