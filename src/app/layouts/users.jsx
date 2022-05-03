@@ -13,6 +13,7 @@ const Users = () => {
     const [selectedProf, setSelectedProf] = useState();
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
     const [users, setUsers] = useState(null);
+    const [searchName, setSearchName] = useState("");
     useEffect(() => {
         API.users.fetchAll().then((data) => setUsers(data));
     }, []);
@@ -40,10 +41,15 @@ const Users = () => {
         setCurrentPage(pageIndex);
     };
     const handleProfessionSelect = (item) => {
+        setSearchName("");
         setSelectedProf(item);
     };
     const handleSort = (item) => {
         setSortBy(item);
+    };
+    const handleSearchName = ({ target }) => {
+        setSelectedProf();
+        setSearchName(target.value);
     };
     if (users) {
         const filteredUsers = selectedProf
@@ -52,13 +58,17 @@ const Users = () => {
                       JSON.stringify(user.profession) ===
                       JSON.stringify(selectedProf)
               )
-            : users;
+            : searchName ? users.filter(
+                user => user.name.toLowerCase().includes(searchName.toLowerCase())
+            ) : users;
         const count = filteredUsers.length;
+
         const sortedUsers = _.orderBy(
             filteredUsers,
             [sortBy.path],
             [sortBy.order]
         );
+
         const userCrop = paginate(sortedUsers, currentPage, pageSize);
         const clearFilter = () => {
             setSelectedProf();
@@ -82,6 +92,7 @@ const Users = () => {
                 )}
                 <div className="d-flex flex-column">
                     <SearchStatus length={count} />
+                    <input type="text" placeholder="Search..." className="form-control" value={searchName} onChange={handleSearchName}/>
 
                     {count > 0 && (
                         <UsersTable
