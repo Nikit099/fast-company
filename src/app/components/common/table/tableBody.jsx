@@ -24,8 +24,7 @@ function TableBody({ data, columns }) {
                                     className="beaut"
                                     to={`/users/${item._id}`}
                                 >
-                                    {" "}
-                                    {item.name}{" "}
+                                    {item.name}
                                 </Link>
                             ) : (
                                 renderContent(item, column)

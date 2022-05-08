@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import TextField from "../common/form/textField";
-import { validator } from "../../utils/validator";
-import API from "../../api";
-import SelectField from "../common/form/selectField";
-import RadioField from "../common/form/radioField";
-import MultiSelectField from "../common/form/multiSelectField";
+import TextField from "../../common/form/textField";
+import { validator } from "../../../utils/validator";
+import API from "../../../api";
+import SelectField from "../../common/form/selectField";
+import RadioField from "../../common/form/radioField";
+import MultiSelectField from "../../common/form/multiSelectField";
 import { useParams, useHistory } from "react-router-dom";
 function EditPage() {
     const [data, setData] = useState({
