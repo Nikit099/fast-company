@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 function Qualitie(props) {
     return (
@@ -11,8 +10,5 @@ function Qualitie(props) {
         </span>
     );
 }
-Qualitie.propTypes = {
-    color: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-};
+
 export default Qualitie;

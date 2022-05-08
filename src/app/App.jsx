@@ -1,23 +1,25 @@
 import React from "react";
-import NavBar from "./components/navBar";
-import Users from "./layouts/users";
-import { Route, Switch } from "react-router-dom";
-import Main from "./layouts/main";
-import Login from "./layouts/login";
-import UserPage from "./components/userPage";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-const App = () => {
+import Users from "./layouts/users";
+import Login from "./layouts/login";
+import Main from "./layouts/main";
+import NavBar from "./components/ui/navBar";
+import EditPage from "./components/page/editPage";
+
+function App() {
     return (
-        <>
+        <div>
             <NavBar />
             <Switch>
-                <Route path="/main" component={Main} />
-                <Route path="/login" component={Login} />
-                <Route path="/users/:userId" component={UserPage} />
-                <Route path="/users" component={Users} />
+            <Route path="/users/:userId/edit" component={EditPage} />
+                <Route path="/users/:userId?" component={Users} />
+                <Route path="/login/:register?" component={Login} />
+                <Route path="/" exact component={Main} />
+                <Redirect to="/" />
             </Switch>
-        </>
+        </div>
     );
-};
+}
 
 export default App;
