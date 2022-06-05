@@ -1,2 +1,2 @@
-import EditPage from "./editPage";
-export default EditPage;
+import EditUserPage from "./editPage";
+export default EditUserPage;
